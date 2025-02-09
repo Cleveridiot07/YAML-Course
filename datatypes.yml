@@ -1,0 +1,81 @@
+# Variables in YAML
+
+# Strings
+name: Cleveridiot  # A simple string
+fruit: apple  # Another string example
+job: "Food"  # Strings can be in double quotes
+bio: |
+  for multiline strings.
+  Example string.  # '|' preserves newlines in multiline strings
+message: > 
+  This will 
+  print out the string
+  in a single line with \n as separator.  # '>' folds multiple lines into a single line
+
+---
+# Numbers
+age: 30  # Integer value
+score: 85.5  # Floating-point number
+
+---
+# Boolean values
+is_happy: true  # Boolean value (true)
+another: TRUE  # Boolean value (true, case insensitive)
+hell: NULL  # Null value
+
+---
+# Specifying the type explicitly
+zero: !!int 0  # Integer zero
+positive: !!int 45  # Positive integer
+negative: !!int -85  # Negative integer
+binary: !!int 0b110010  # Binary representation (decimal 50)
+octalNum: !!int 065  # Octal representation (decimal 53)
+hexa: !!int 0x85  # Hexadecimal representation (decimal 133)
+commavalue: !!int +540_875  # Integer with underscores for readability (540875)
+
+---
+# Floating point numbers
+marks: !!float 58.64  # Floating-point number
+infinite: !!float .inf  # Represents infinity
+not a number: .nan  # Not-a-Number (NaN) value
+
+---
+# Boolean values with explicit type
+true_bool: !!bool true  # Boolean true
+false_bool: !!bool false  # Boolean false
+
+# String with explicit type
+2nd_fruit: !!str "banana"  # String type explicitly defined
+
+---
+# Null values
+1st_null: !!null null  # Explicit null value
+second_null: !!null  # Another way to define null
+
+---
+# Arrays (Lists)
+fruits: [apple, banana, orange]  # List of strings
+
+---
+# Nested objects (Maps)
+person:
+  name: John Doe  # Nested string value
+  age: 30  # Nested integer value
+  address:
+    street: 123 Main St  # Nested structure with multiple fields
+    city: New York
+    state: NY
+    country: USA
+
+---
+# Dates
+1st_date: !!timestamp 2022-01-01  # Timestamp format (YAML date type)
+iso_date: !!str "2022-01-01T00:00:00Z"  # ISO format date as a string
+2nd_date: !!str "2022-12-31"  # Another date in string format
+
+---
+# Maps (Dictionaries)
+person_details:
+  name: John Doe  # Key-value mapping
+
+...  # End of YAML document

@@ -1,0 +1,86 @@
+# YAML Advanced Data Structures
+
+# Sequence (List)
+student : !!sequence
+  - marks  # First element
+  - name   # Second element
+  - grade  # Third element
+
+cities: [new delhi, mumbai]  # Inline sequence (list)
+
+# Intents as a sequence (list)
+- greet
+- ask_marks
+- ask_name
+- ask_grade
+- ask_city
+
+# Sparse sequence (list with null values)
+sparse_sequence: 
+ - marks
+ - Null  # Represents a missing value
+ - name
+ - Null
+ - grade
+ - Null
+ - city
+
+# Nested List (List within a list)
+nested_list : 
+  -
+    - a  # First inner list
+    - b
+  - 
+    - c  # Second inner list
+    - d
+
+# Maps (Dictionary with key-value pairs)
+maps:
+  marks:
+    new delhi: 100  # Nested dictionary
+    mumbai: 80
+  name:
+    new delhi: John
+    mumbai: Jane
+  grade:
+    new delhi: A
+    mumbai: B
+
+# Pairs (List of key-value pairs)
+pairs:
+  - [marks, 100]
+  - [name, John]
+  - [grade, A]
+  - [city, new delhi]
+
+pair example2 : !!pairs  # Explicitly defined pairs
+  - job : student
+  - job : teacher
+
+# Set (Unique unordered collection)
+set example : !!set
+  ? clever  # Unique values
+  ? idiot
+  # ? clever (can't have duplicate mapping)
+
+---
+# Ordered Mapping (Dictionary with explicit order)
+dictionaries: !!omap
+  - marks : 100
+  - name : John
+
+---
+# Reusing properties using anchors & aliases
+likings: &likings  # Anchor defining reusable properties
+  fav: mango
+  dis: grapes
+
+person:
+  name: Clever
+  age: 25
+  likes:
+    fav: *likings  # Referencing anchor
+  # Another way to reuse
+  <<: *likings  # Merging properties from anchor
+
+...  # End of YAML document
